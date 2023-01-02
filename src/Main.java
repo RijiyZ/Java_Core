@@ -1,28 +1,79 @@
+import transport.Car;
+
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
-        int currentYear = 2023;
-        Human max = new Human();
-        max.name = "Максим";
-        max.age = 35;
-        max.city = "Минск";
+        Car lada = new Car(
+                "Lada",
+                null,
+                1.7,
+                "Желтый",
+                2015,
+                "Россия");
+        lada.setRegNumber("H998HP193");
+        System.out.println(lada.isCorrectRegNumber());
+        Car audi = new Car(
+                "Audi",
+                "A8",
+                3.0,
+                null,
+                2020,
+                "Germany");
+        audi.setGears("Автомат");
+        audi.setRegNumber("H998H8193");
+        System.out.println(audi.isCorrectRegNumber());
+        Car bmw = new Car(
+                "Bmw",
+                "Z8",
+                0,
+                "Black",
+                2021,
+                "Germany");
+        bmw.setSummerTyres(false);
+        bmw.setKey(new Car.Key(true,false));
+        bmw.setInsurance(new Car.Insurance(LocalDate.now(),40_450,"23423443"));
+        bmw.getInsurance().checkExpineDay();
+        bmw.getInsurance().checkNumber();
+        Car kia = new Car(
+                "Kia",
+                "Sportage 4",
+                2.4,
+                "Red",
+                0,
+                "Южная Корея");
+        Car hyandai = new Car(
+                null,
+                "Avante",
+                1.6,
+                null,
+                2016,
+                "Южная Корея");
+        printInfo(lada);
+        printInfo(audi);
+        printInfo(bmw);
+        printInfo(hyandai);
+        printInfo(kia);
 
-        Human ann = new Human();
-        ann.name = "Аня";
-        ann.age = 29;
-        ann.city = "Москва";
+    }
 
-        Human kate = new Human();
-        kate.name = "Катя";
-        kate.age = 28;
-        kate.city = "Калининград";
-
-        Human art = new Human();
-        art.name = "Артем";
-        art.age = 27;
-        art.city = "Москва";
-        System.out.println("Привет! Меня зовут " + max.name + ". Я из города " + max.city + ". Я родился в " + (currentYear - max.age) + " году. Будем знакомы!");
-        System.out.println("Привет! Меня зовут " + ann.name + ". Я из города " + ann.city + ". Я родился в " + (currentYear - ann.age) + " году. Будем знакомы!");
-        System.out.println("Привет! Меня зовут " + art.name + ". Я из города " + art.city + ". Я родился в " + (currentYear - art.age) + " году. Будем знакомы!");
-        System.out.println("Привет! Меня зовут " + kate.name + ". Я из города " + kate.city + ". Я родился в " + (currentYear - kate.age) + " году. Будем знакомы!");
+    private static void printInfo(Car car) {
+        System.out.println("Марка авто: " + car.getBrand() +
+                        " / Модель: " + car.getModel() +
+                        " / Год: " + car.getProductionYear() +
+                        " / Производитель: " + car.getProductionCountry() +
+                        " / Цвет: " + car.getColor() +
+                        " / Двигатель: " + car.getEngineVolume() +
+                        " / Коробка передач: " + car.getGears() +
+                        " / Тип кузова: " + car.getTypeOfBody() +
+                        " / Регистрационный номер: " + car.getRegNumber() +
+                        " / Колличество мест: " + car.getSeatsCount() +
+                        " / Резина: " + (car.isSummerTyres()?"Летняя" : " Зимняя") +
+                        " / " + (car.getKey().isWithoutKeyAccess() ? "Безключевой доступ" : "Ключевой доступ") +
+                        " / " + (car.getKey().isWithoutKeyAccess() ? "Удаленный запуск" : "Обычный запуск") +
+                        " / Номер страховки: " + car.getInsurance().getNumber() +
+                        " / Срок действия страховки: " + car.getInsurance().getExpineDate() +
+                        " / Стоимость страховки: " + car.getInsurance().getCost()
+                );
     }
 }
