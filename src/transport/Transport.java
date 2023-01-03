@@ -1,7 +1,4 @@
 package transport;
-
-import java.time.LocalDate;
-
 public class Transport implements Competing {
     private final String brand;
     private final String model;
@@ -20,6 +17,7 @@ public class Transport implements Competing {
         }
         this.engineVolume = engineVolume;
     }
+
     public void startMoving() {
         System.out.println(getBrand() +" " + getModel() + " начинает движение");
     }
