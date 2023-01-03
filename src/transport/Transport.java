@@ -1,5 +1,5 @@
 package transport;
-public class Transport implements Competing {
+public abstract class Transport implements Competing {
     private final String brand;
     private final String model;
     private double engineVolume;
@@ -339,4 +339,5 @@ public class Transport implements Competing {
     //        }
     //    }
     //}
+    public abstract void printType();
 }
