@@ -4,12 +4,8 @@ import transport.Competing;
 import transport.Transport;
 
 public class DriverD <T extends Transport & Competing> extends Driver {
-    public DriverD() {
-        super("", true, 0);
-    }
-
-    public DriverD(String fullName, boolean license, int experience) {
-        super(fullName, license, experience);
+    public DriverD(String fullName, boolean license, int experience, String category) {
+        super(fullName, license, experience, category);
     }
 
     @Override

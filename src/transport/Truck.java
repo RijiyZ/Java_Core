@@ -57,4 +57,9 @@ public class Truck extends Transport implements Competing {
         }
     }
 
+    @Override
+    public boolean service() {
+        return Math.random() > 0.25;
+    }
+
 }

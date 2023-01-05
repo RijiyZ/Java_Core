@@ -7,22 +7,23 @@ public abstract class Driver {
     private boolean license;
     private int experience;
 
+    private String category;
 
 
-    public Driver(String fullName, boolean license, int experience) {
+
+    public Driver(String fullName, boolean license, int experience, String category) {
         if (fullName == null || fullName.isEmpty()) {
             this.fullName = "Фамилия Имя Отчество";
         } else {
             this.fullName = fullName;
         }
-
         this.license = license;
-
         if (experience <= 0) {
             this.experience = 1;
         } else {
             this.experience = experience;
         }
+        setCategory(category);
     }
 
     public String getFullName() {
@@ -56,9 +57,31 @@ public abstract class Driver {
             this.experience = experience;
         }
     }
+    public String getCategory() {
+        return category;
+    }
     public abstract void startMoving();
     public abstract void stopMoving();
     public abstract void refuelTheVehicle();
+
+    public void setCategory(String category) {
+        if (category == null || category.isEmpty()) {
+            try {
+                throw new DriversLicenceException("Необходимо указать категорию водительского удостоверения для водителя - " + getFullName());
+            } catch (DriversLicenceException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (category.equals("B") || category.equals("C") || category.equals("D")) {
+            this.category = category;
+        } else {
+            try {
+                throw new DriversLicenceException("Driver's licence category have to be specified" +
+                        " for the driver " + getFullName());
+            } catch (DriversLicenceException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

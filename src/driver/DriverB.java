@@ -4,13 +4,11 @@ import transport.Competing;
 import transport.Transport;
 
 public class DriverB <T extends Transport & Competing> extends Driver {
-    public DriverB() {
-        super("", true, 0);
+
+    public DriverB(String fullName, boolean license, int experience, String category) {
+        super(fullName, license, experience, category);
     }
 
-    public DriverB(String fullName, boolean license, int experience) {
-        super(fullName, license, experience);
-    }
 
     @Override
     public void startMoving() {
@@ -27,6 +25,13 @@ public class DriverB <T extends Transport & Competing> extends Driver {
     public void refuelTheVehicle() {
         System.out.println("Водители категории 'B' заправляют автомобиль");
     }
+
+    @Override
+    public String getFullName() {
+        return super.getFullName();
+    }
+
+
 
     public void drive(T transport) {
         System.out.println("Водитель " + getFullName() +

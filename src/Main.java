@@ -137,13 +137,31 @@ public class Main {
         scania.startMoving();
         ivenko.pitStop(false);
 
-        DriverB<Car> ivanDikarev = new DriverB<>("Дикарев Иван Сергеевич", true, 2);
-        DriverC<Truck> elenaDikareva = new DriverC<>("Дикарева Елена Владимировна", false, 12);
-        DriverD<Bus> innaKolesnikova = new DriverD<>("Колесникова Инна Владимировна", true, 8);
+        DriverB<Car> ivanDikarev = new DriverB<>("Дикарев Иван Сергеевич", true, 2, "B");
+        DriverC<Truck> elenaDikareva = new DriverC<>("Дикарева Елена Владимировна", false, 12, "C");
+        DriverD<Bus> innaKolesnikova = new DriverD<>("Колесникова Инна Владимировна", true, 8, "D");
 
         ivanDikarev.drive(daewooNexia);
         elenaDikareva.drive(scania);
         innaKolesnikova.drive(isuzu);
+        service(daewooNexia, nissanSilvia, toyotaSupra, nissianSkyline);
+        service(ankai, goldenDragon, hyundaiDai, isuzu);
+        service(man, daf, scania, ivenko);
+    }
+
+    private static void service(Transport...transports){
+        for (Transport transport : transports) {
+            serviceTransport(transport);
+        }
+    }
+    private static void serviceTransport(Transport transport) {
+        try {
+            if (!transport.service()) {
+                throw new RuntimeException("Автомобиль " + transport.getBrand() + transport.getModel() + " не прошел диагностику");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void printInfo(Transport transport) {
