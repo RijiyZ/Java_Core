@@ -1,10 +1,7 @@
 import driver.DriverB;
 import driver.DriverC;
 import driver.DriverD;
-import transport.Bus;
-import transport.Car;
-import transport.Transport;
-import transport.Truck;
+import transport.*;
 
 import java.time.LocalDate;
 
@@ -98,10 +95,10 @@ public class Main {
         //printInfo(KamazBus);
         //printInfo(MersedecBus);
 
-        Car daewooNexia = new Car("Daewoo", "Nexia",3.6);
-        Car nissanSilvia = new Car("Nissan", "Silvia",2.6);
-        Car toyotaSupra = new Car("Toyota", "Supra",2.8);
-        Car nissianSkyline = new Car("Nissan", "Skyline",4.6);
+        Car daewooNexia = new Car("Daewoo", "Nexia",3.6, TypeOfBody.SEDAN);
+        Car nissanSilvia = new Car("Nissan", "Silvia",2.6, TypeOfBody.CROSSOVER);
+        Car toyotaSupra = new Car("Toyota", "Supra",2.8, TypeOfBody.OFFROAD);
+        Car nissianSkyline = new Car("Nissan", "Skyline",4.6, TypeOfBody.HATCHBACK);
         printInfo(daewooNexia);
         printInfo(nissanSilvia);
         printInfo(toyotaSupra);
@@ -112,10 +109,10 @@ public class Main {
         toyotaSupra.startMoving();
         nissianSkyline.pitStop(false);
 
-        Bus ankai = new Bus("ANKAI ", "ANKAI1488",1.3);
-        Bus goldenDragon = new Bus("GOLDEN", "DRAGON",2.0);
-        Bus hyundaiDai = new Bus("HYUNDAI", "DAI",1.8);
-        Bus isuzu = new Bus("ISUZU ", "UZUSI ",2.6);
+        Bus ankai = new Bus("ANKAI ", "ANKAI1488",1.3, Capacity.EXTRA_LARGE);
+        Bus goldenDragon = new Bus("GOLDEN", "DRAGON",2.0, Capacity.MEDIUM);
+        Bus hyundaiDai = new Bus("HYUNDAI", "DAI",1.8, Capacity.EXTRA_SMALL);
+        Bus isuzu = new Bus("ISUZU ", "UZUSI ",2.6, Capacity.LARGE);
         printInfo(ankai);
         printInfo(goldenDragon);
         printInfo(hyundaiDai);
@@ -126,10 +123,10 @@ public class Main {
         hyundaiDai.startMoving();
         isuzu.pitStop(false);
 
-        Truck man = new Truck("MAN ", "WOMAN",2.3);
-        Truck daf = new Truck("DAF", "FAMINE",4.2);
-        Truck scania = new Truck("SCANIA", "AINACS",3.1);
-        Truck ivenko = new Truck("IVENKO ", "IVANKO ",6.6);
+        Truck man = new Truck("MAN ", "WOMAN",2.3, Weight.N1);
+        Truck daf = new Truck("DAF", "FAMINE",4.2, Weight.N3);
+        Truck scania = new Truck("SCANIA", "AINACS",3.1, Weight.N1);
+        Truck ivenko = new Truck("IVENKO ", "IVANKO ",6.6, Weight.N2);
         printInfo(man);
         printInfo(daf);
         printInfo(scania);
@@ -140,19 +137,37 @@ public class Main {
         scania.startMoving();
         ivenko.pitStop(false);
 
-        DriverB<Car> ivanDikarev = new DriverB<>("Дикарев Иван Сергеевич", true, 2);
-        DriverC<Truck> elenaDikareva = new DriverC<>("Дикарева Елена Владимировна", false, 12);
-        DriverD<Bus> innaKolesnikova = new DriverD<>("Колесникова Инна Владимировна", true, 8);
+        DriverB<Car> ivanDikarev = new DriverB<>("Дикарев Иван Сергеевич", true, 2, "B");
+        DriverC<Truck> elenaDikareva = new DriverC<>("Дикарева Елена Владимировна", false, 12, "C");
+        DriverD<Bus> innaKolesnikova = new DriverD<>("Колесникова Инна Владимировна", true, 8, "D");
 
         ivanDikarev.drive(daewooNexia);
         elenaDikareva.drive(scania);
         innaKolesnikova.drive(isuzu);
+        service(daewooNexia, nissanSilvia, toyotaSupra, nissianSkyline);
+        service(ankai, goldenDragon, hyundaiDai, isuzu);
+        service(man, daf, scania, ivenko);
     }
 
-    private static void printInfo(Transport car) {
-        System.out.println("Марка авто: " + car.getBrand() +
-                        " / Модель: " + car.getModel() +
-                        " / Двигатель: " + car.getEngineVolume()
+    private static void service(Transport...transports){
+        for (Transport transport : transports) {
+            serviceTransport(transport);
+        }
+    }
+    private static void serviceTransport(Transport transport) {
+        try {
+            if (!transport.service()) {
+                throw new RuntimeException("Автомобиль " + transport.getBrand() + transport.getModel() + " не прошел диагностику");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void printInfo(Transport transport) {
+        System.out.println("Марка авто: " + transport.getBrand() +
+                        " / Модель: " + transport.getModel() +
+                        " / Двигатель: " + transport.getEngineVolume()
                        // " / Год: " + car.getProductionYear() +
                        // " / Производитель: " + car.getProductionCountry() +
                        // " / Цвет: " + car.getColor() +
@@ -168,5 +183,7 @@ public class Main {
                        // " / Стоимость страховки: " + car.getInsurance().getCost() +
                        // " / Максимальная скорость: " + car.getMaxSpeed()
                 );
+        transport.printType();
+
     }
 }
