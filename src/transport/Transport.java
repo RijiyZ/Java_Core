@@ -341,6 +341,11 @@ public abstract class Transport implements Competing {
     //}
     public abstract void printType();
     public abstract boolean service();
+
+    @Override
+    public String toString() {
+        return  brand + " " +  model + ", Двигатель: " + engineVolume + " \n";
+    }
 }
 
 
