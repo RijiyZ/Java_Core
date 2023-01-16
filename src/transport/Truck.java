@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Truck extends Transport implements Competing {
 
     private Weight weight;
@@ -59,7 +61,12 @@ public class Truck extends Transport implements Competing {
 
     @Override
     public boolean service() {
-        return Math.random() > 0.25;
+        return Math.random() > 0.15;
+    }
+
+    @Override
+    public void performMaintenance(List<Mechanic> mechanics) {
+
     }
 
 }

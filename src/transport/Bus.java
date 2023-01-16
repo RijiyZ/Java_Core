@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Bus extends Transport implements Competing {
 
     private Capacity capacity;
@@ -59,6 +61,11 @@ public class Bus extends Transport implements Competing {
     public boolean service() {
         System.out.println("Автобус " + getBrand() + getModel() + " в диагностики не нуждается");
         return true;
+    }
+
+    @Override
+    public void performMaintenance(List<Mechanic> mechanics) {
+
     }
 
 }
