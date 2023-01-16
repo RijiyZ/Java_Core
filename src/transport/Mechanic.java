@@ -1,5 +1,6 @@
 package transport;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Mechanic<B extends Transport>  {
@@ -59,6 +60,24 @@ public class Mechanic<B extends Transport>  {
         System.out.println("Механик " + firstName + " " + lastName +
                 " осуществляет техническое обслуживание " + professionalSkills + ", " + transport.getBrand()
                 + " " + transport.getModel());
+    }
+    public static void mechanicsBusInTheList(List<Mechanic<Bus>> mechanicBus) {
+        for (Mechanic<Bus> mechanicD : mechanicBus) {
+            System.out.println("Механик по обслуживанию автобусов: " + mechanicD.getFirstName() + " " + mechanicD.getLastName() +
+                    " с компании " + mechanicD.company);
+        }
+    }
+    public static void mechanicsCarInTheList(List<Mechanic<Car>> mechanicCar) {
+        for (Mechanic<Car> mechanicB : mechanicCar) {
+            System.out.println("Механик по обслуживанию легковых автомобилей: " + mechanicB.getFirstName() + " " + mechanicB.getLastName() +
+                    " с компании " + mechanicB.company);
+        }
+    }
+    public static void mechanicsTruckInTheList(List<Mechanic<Truck>> mechanicTruck) {
+        for (Mechanic<Truck> mechanicC : mechanicTruck) {
+            System.out.println("Механик по обслуживанию грузовых автомобилей: " + mechanicC.getFirstName() + " " + mechanicC.getLastName() +
+                    " с компании " + mechanicC.company);
+        }
     }
 
     public void add(Mechanic mechanic) {

@@ -87,6 +87,22 @@ public class Main {
         mechanics.add(elena);
         System.out.println(mechanics);
 
+        System.out.println("Механики по ремонту легковых автомобилей в списке: ");
+
+
+        Mechanic<Car> mechanicCar1 = new Mechanic<>("Иван", "Дикарев", "PitStop", ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT);
+        Mechanic<Car> mechanicCar2 = new Mechanic<>("Макс", "Ушаков", "Автосервис DAEWOO", ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS);
+        Mechanic<Car> mechanicCar3 = new Mechanic<>("Дима", "Илларионов", "У Демаса", ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS);
+        Mechanic<Car> mechanicCar4 = new Mechanic<>("Анастасия", "Дикарева", "PitStop", ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT);
+
+        Mechanic<Truck> mechanicTruck1 = new Mechanic<>("Имя1", "Фамлия1", "PitStop", ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT);
+        Mechanic<Truck> mechanicTruck2 = new Mechanic<>("Имя2", "Фамлия2", "Автосервис DAEWOO", ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_CARS);
+        Mechanic<Truck> mechanicTruck3 = new Mechanic<>("Имя3", "Фамлия3", "У Демаса", ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_TRUCKS);
+        Mechanic<Truck> mechanicTruck4 = new Mechanic<>("Имя4", "Фамлия4", "PitStop", ProfessionalSkills.PROFESSIONAL_SKILLS_OF_WORKING_WITH_ALL_TRANSPORT);
+
+        daewooNexia.addMechanics(mechanicCar1);
+        scania.addMechanics(mechanicTruck4);
+
         ArrayList<Transport> transports = new ArrayList<>();
         transports.add(daewooNexia);
         transports.add(nissanSilvia);
@@ -103,9 +119,13 @@ public class Main {
         drivers.add(andrei);
         System.out.println(drivers);
 
+
         STO sto = new STO();
-        sto.addTransport(nissanSilvia); sto.addTransport(daewooNexia); sto.addTransport(nissianSkyline); sto.addTransport(toyotaSupra);
-        sto.addTransport(scania); sto.addTransport(daf); sto.addTransport(man); sto.addTransport(ivenko);
-        sto.addTransport(goldenDragon); sto.addTransport(isuzu); sto.addTransport(hyundaiDai); sto.addTransport(ankai);
+        sto.addTransport(daewooNexia);
+        sto.addTransport(scania);
+        sto.addTransport(goldenDragon);
+
+
+
     }
 }

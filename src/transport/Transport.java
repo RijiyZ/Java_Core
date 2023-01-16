@@ -7,7 +7,10 @@ public abstract class Transport implements Competing {
     private final String brand;
     private final String model;
     private double engineVolume;
-    private final List<Mechanic> mechanics = new ArrayList<>();
+
+    List<Mechanic> mechanic;
+
+    List<Transport> transports;
 
     public Transport(String brand, String model, double engineVolume) {
         if (brand == null){
@@ -68,8 +71,14 @@ public abstract class Transport implements Competing {
     public abstract void printType();
     public abstract boolean service();
     public List<Mechanic> getMechanic() {
-        return mechanics;
+        return mechanic;
     }
+
+    public void addMechanics(Mechanic mechanics) {
+        mechanics.add(mechanics);
+    }
+
+    public abstract void performMaintenance(List<Mechanic> mechanics);
 
 
     @Override
