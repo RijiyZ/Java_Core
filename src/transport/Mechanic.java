@@ -1,10 +1,8 @@
-package Mechanic;
-
-import transport.Transport;
+package transport;
 
 import java.util.Objects;
 
-public class Mechanic {
+public class Mechanic<B extends Transport>  {
     private final String firstName;
     private final String lastName;
     private String company;
@@ -37,6 +35,7 @@ public class Mechanic {
         return company;
     }
 
+
     public void setCompany(String company) {
         if (company == null || company.isEmpty()) {
             this.company = "Компания";
@@ -58,8 +57,14 @@ public class Mechanic {
 
     public void carryOutTechnicalService(Transport transport) {
         System.out.println("Механик " + firstName + " " + lastName +
-                " сделает тех.обслуживание " + professionalSkills + ", " + transport.getBrand()
+                " осуществляет техническое обслуживание " + professionalSkills + ", " + transport.getBrand()
                 + " " + transport.getModel());
+    }
+
+    public void add(Mechanic mechanic) {
+    }
+    public void runTO() {
+        System.out.println("Тухобслуживание транспорта");
     }
 
     @Override

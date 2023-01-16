@@ -1,14 +1,12 @@
-import Mechanic.Mechanic;
-import Mechanic.ProfessionalSkills;
+import transport.Mechanic;
+import transport.ProfessionalSkills;
 import driver.Driver;
 import driver.DriverB;
 import driver.DriverC;
 import driver.DriverD;
 import transport.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -76,7 +74,7 @@ public class Main {
                 "B");
         DriverB<Car> aleksandra = new DriverB<>("Александра Мирная", true,
                 8, "B");
-        DriverC<Truck> dasha = new DriverC<>("Даша Стограмми Наша", true,
+        DriverC<Truck> dasha = new DriverC<>("Даша Наша", true,
                 10, "C");
 
 
@@ -105,29 +103,9 @@ public class Main {
         drivers.add(andrei);
         System.out.println(drivers);
 
+        STO sto = new STO();
+        sto.addTransport(nissanSilvia); sto.addTransport(daewooNexia); sto.addTransport(nissianSkyline); sto.addTransport(toyotaSupra);
+        sto.addTransport(scania); sto.addTransport(daf); sto.addTransport(man); sto.addTransport(ivenko);
+        sto.addTransport(goldenDragon); sto.addTransport(isuzu); sto.addTransport(hyundaiDai); sto.addTransport(ankai);
     }
-
-
-
-//    private static void printInfo(Transport transport) {
-//        System.out.println("Марка авто: " + transport.getBrand() +
-//                        " / Модель: " + transport.getModel() +
-//                        " / Двигатель: " + transport.getEngineVolume()
-//                       // " / Год: " + car.getProductionYear() +
-//                       // " / Производитель: " + car.getProductionCountry() +
-//                       // " / Цвет: " + car.getColor() +
-//                       // " / Коробка передач: " + car.getGears() +
-//                       // " / Тип кузова: " + car.getTypeOfBody() +
-//                       // " / Регистрационный номер: " + car.getRegNumber() +
-//                       // " / Колличество мест: " + car.getSeatsCount() +
-//                       // " / Резина: " + (car.isSummerTyres()?"Летняя" : " Зимняя") +
-//                       // " / " + (car.getKey().isWithoutKeyAccess() ? "Безключевой доступ" : "Ключевой доступ") +
-//                       // " / " + (car.getKey().isWithoutKeyAccess() ? "Удаленный запуск" : "Обычный запуск") +
-//                       // " / Номер страховки: " + car.getInsurance().getNumber() +
-//                       // " / Срок действия страховки: " + car.getInsurance().getExpineDate() +
-//                       // " / Стоимость страховки: " + car.getInsurance().getCost() +
-//                       // " / Максимальная скорость: " + car.getMaxSpeed()
-//                );
-//        transport.printType();
-//    }
 }

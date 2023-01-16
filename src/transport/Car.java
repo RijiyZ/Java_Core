@@ -1,11 +1,5 @@
 package transport;
 
-import Mechanic.Mechanic;
-import driver.Driver;
-import driver.DriverB;
-
-import java.util.ArrayList;
-
 public class Car extends Transport implements Competing {
 
     private TypeOfBody typeOfBody;

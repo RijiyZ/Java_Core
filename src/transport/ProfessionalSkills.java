@@ -1,4 +1,4 @@
-package Mechanic;
+package transport;
 
 public enum ProfessionalSkills {
     PROFESSIONAL_SKILLS_OF_WORKING_WITH_BUSES("Автобусы"),
